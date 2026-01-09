@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>IFC Netto/Bruto Inhoud Webapp</title>
+</head>
+<body>
+    <h1>Upload IFC-bestand voor Netto/Bruto Inhoud</h1>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul>
+        {% for message in messages %}
+          <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+    <form method="post" enctype="multipart/form-data">
+        <input type="file" name="ifcfile" accept=".ifc" required>
+        <button type="submit">Uploaden & Berekenen</button>
+    </form>
+</body>
+</html>
