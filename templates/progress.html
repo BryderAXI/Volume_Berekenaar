@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Verwerking bezig...</title>
+    <script>
+        let done = false;
+        function pollLogs() {
+            fetch(`/logs/{{ task_id }}`)
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('log').textContent = data.logs;
+                    if (data.done && !done) {
+                        done = true;
+                        document.getElementById('download').innerHTML =
+                            `<a href="/download/${data.result_filename}">Download Excel Resultaat</a>`;
+                    }
+                    if (!done) {
+                        setTimeout(pollLogs, 1000);
+                    }
+                });
+        }
+        window.onload = pollLogs;
+    </script>
+</head>
+<body>
+    <h1>Verwerking bezig...</h1>
+    <pre id="log">Start...</pre>
+    <div id="download"></div>
+</body>
+</html>

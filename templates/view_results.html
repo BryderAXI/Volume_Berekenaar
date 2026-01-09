@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Resultaten</title>
+</head>
+<body>
+    <h1>Samenvatting</h1>
+    {{ summary_html|safe }}
+    <h1>Ruimtes</h1>
+    {{ spaces_html|safe }}
+    <a href="/download/{{ request.view_args.filename }}">Download Excel</a>
+</body>
+</html>
