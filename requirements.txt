@@ -1,4 +1,8 @@
 flask
 werkzeug
 ifcopenshell
-numpy==1.26.4
+numpy
+pandas
+openpyxl
+trimesh
+scipy
